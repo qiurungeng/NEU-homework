@@ -1,3 +1,3 @@
 # NEU-homework
-交作业
-（统计的是字符，另包含空格换行之类的字符）
+交作业.
+I have modified it,it's ok now!!!
