@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"strings"
 )
 
 func ReadFrom(reader io.Reader, num int) ([]byte, error) {
@@ -18,13 +19,6 @@ func ReadFrom(reader io.Reader, num int) ([]byte, error) {
 	return p, err
 }
 
-func sampleReadFile() {
-
-	file, _ := os.Open("millionRandom.txt")
-	defer file.Close()
-	data, _ := ReadFrom(file, 1000000000)
-	fmt.Println(string(data))
-}
 func Count(s string) map[string]int {
 	var word string
 	m := make(map[string]int)
@@ -46,8 +40,11 @@ func main() {
 	defer file.Close()
 	data, _ := ReadFrom(file, 1000000000)
 	var Allnum string = string(data)
+	Allnum = strings.Replace(Allnum, "\n", "", -1)
+	Allnum = strings.Replace(Allnum, "\r", "", -1)
+
 	//fmt.Println(Allnum)  for text
-	//fmt.Println(Count(Allnum))
+	//fmt.Println(Count(Allnum)) for text
 
 	outputFile, outputError := os.OpenFile("qiurungeng.txt", os.O_WRONLY|os.O_CREATE, 0666)
 	if outputError != nil {
